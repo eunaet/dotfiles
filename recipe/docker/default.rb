@@ -25,7 +25,7 @@ execute "chmod a+r /etc/apt/keyrings/docker.asc" do
 end
 
 remote_file "/etc/apt/sources.list.d/docker.list" do
-  source "files/jammy_docker.list"
+  source "files/noble_docker.list"
 
   not_if "test -f /etc/apt/sources.list.d/docker.list"
 end
