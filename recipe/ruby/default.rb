@@ -16,7 +16,13 @@ package 'libgdbm-dev'
 package 'libdb-dev'
 package 'uuid-dev'
 
-execute "curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash" do
+execute "install rbenv" do
+  command "curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash"
+
+  not_if "rbenv version"
+end
+
+execute "add rbenv to bashrc" do
   command 'echo \'eval "$(~/.rbenv/bin/rbenv init - bash)"\' >> ~/.bashrc'
 
   not_if "rbenv version"
